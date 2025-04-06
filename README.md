@@ -60,10 +60,12 @@
 ## 成果圖
 <img src="/img/LineDetection.png" width=500/>
 <img src="/img/LineDetection2.png" width=500/>
+
 <figure class="video_container">
   <iframe src="outputVideo/output_LaneVideo.mp4" frameborder="0" allowfullscreen="true"> 
 </iframe>
 </figure>
+
 ![](https://github.com/TerryLee629/roadLaneDetection/blob/main/outputVideo/output_LaneVideo.mp4)
 
 ![](https://github.com/TerryLee629/roadLaneDetection/blob/main/outputVideo/output_LaneVideo_solidWhiteRight.mp4)
