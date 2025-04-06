@@ -7,6 +7,6 @@
 
 ## 找出 ROI: Region Of Interest (關注區域)
 - 設定座標去除圖片與車道不相關的景物
-![](/img/Region.png)
+![](/img/Region.png =720*720)
 - 取得ROI後將其使用仿設轉換，讓圖片呈現長方形，使圖片靠近消失點部分的車道更加清晰
-![](/img/Affine.png)
+![](/img/Affine.png =720*720)
