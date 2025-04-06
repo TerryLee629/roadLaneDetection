@@ -60,5 +60,3 @@
 ## 成果圖
 <img src="/img/LineDetection.png" width=500/>
 <img src="/img/LineDetection2.png" width=500/>
-
-![image](https://github.com/TerryLee629/roadLaneDetection/blob/main/outputVideo/output_LaneVideo.mp4)
