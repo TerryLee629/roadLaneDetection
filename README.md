@@ -59,3 +59,4 @@
 ```
 ## 成果圖
 <img src="/img/LineDetection.png" width=500/>
+<img src="/img/LineDetection2.png" width=500/>
