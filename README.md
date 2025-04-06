@@ -11,6 +11,12 @@
 
 ## Affine transformation (仿設轉換)
 - 取得ROI後將其使用仿設轉換，讓圖片呈現長方形，使圖片靠近消失點部分的車道更加清晰。
+
+```
+ a1 = np.float32([p4, p1, p2])
+ a2 = np.float32([[ww/3,0],[0,hh],[ww,hh]])
+ inv_M = cv2.invertAffineTransform(M)    #反仿射矩陣
+```
 <img src="/img/Affine.png" width=500/>
 - 取得反仿設矩陣，用於之後將標示好的車道圖反仿設回原圖。
 
