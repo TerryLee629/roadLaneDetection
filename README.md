@@ -23,5 +23,39 @@
 ```
  inv_M = cv2.invertAffineTransform(M)    #反仿射矩陣
 ```
-## 
+## 模糊化侵蝕 與 邊緣檢測
+- 使用高斯模糊與侵蝕，使途中其他細節模糊消失，凸顯車道線。
 
+```
+ output = cv2.GaussianBlur(output, (5, 5), 0)  # 指定區域單位為 (5,5)
+ output = cv2.erode(output, kernel)  # 侵蝕，將白色小圓點移除
+```
+<img src="/img/GaussianBlur.png" width=500/>
+- 進行Canny邊緣檢測。
+
+```
+ output = cv2.Canny(output, 150, 200)  # 偵測邊緣
+```
+<img src="/img/CannyEdgepng.png" width=500/>
+## 霍夫直線檢測
+- 霍夫直線檢測得到途中直線點，並計算點中的斜率和截距，最後得到車道範圍的四個點，並用綠色色塊填滿。
+
+```
+ if done == 3:   #確定有兩條車道線圍出車道
+    y1 = hh-r
+    x = (int)(((y1-b1)/s1 + (y1-b2)/s2)/2)
+    if abs(x-int(ww/2)-1) > 45: co = (0,0,255)
+    cv2.line(img2, (x, y1), (x, y1-15), co, 2)
+    p1 = [(int)((y1-b1)/s1), (int)(y1)]  
+    p2 = [(int)((y2-b1)/s1), (int)(y2)]
+    p3 = [(int)((y1-b2)/s2), (int)(y1)]  
+    p4 = [(int)((y2-b2)/s2), (int)(y2)]
+    zero = np.zeros((hh, ww, 3), dtype='uint8')  
+    area = [p1, p2, p4, p3]  
+    pts = np.array(area)
+    mask = cv2.fillPoly(zero, [pts], (0, 50, 0))
+    mask = cv2.warpAffine(mask, inv_M, (ww, hh))    #將反仿設矩陣放回到mask上使其貼合原圖
+    img2 = cv2.addWeighted(img2,1.0, mask,1.0, 0)   #將車道範圍以綠色填滿
+```
+## 成果圖
+<img src="/img/LineDetection.png" width=500/>
